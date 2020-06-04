@@ -42,10 +42,10 @@ int main() {
 
     return 0;
 }
-
+//take row 1 and row 2
 void getUserInput() {
     char charArr[80];
-    int inputArr[COLUMN_SIZE];
+    int inputArr[ROW_SIZE][COLUMN_SIZE];
     int count = 0;
     int duplicate;
     int flag = 1;
@@ -54,48 +54,56 @@ void getUserInput() {
     printf("-You are asked to enter first 2 row of Sudoku grid\n" );
 
 
-    //for(int x = 1 ; x <= USER_INPUT_ROW_NO ; x++){
-        while((count == 9) || (flag != 0)){
-            printf("\nStart of while loop");
+    for(int x = 0 ; x < USER_INPUT_ROW_NO ; x++) {
+
+        while ((count == 9) || (flag == 1)) {
             flag = 1;
             printf("\n1. You must enter exactly nine distinct digits between (1 - 9)");
             printf("\n2. Use Space/Tab key to enter the next values");
             printf("\n3. Press 'Return' key after entering nine digits");
-            printf("\nEnter row 1 of your Sudoku grid:\n");
+            printf("\nEnter row %d of your Sudoku grid:\n", x+1);
 
             fgets(charArr, sizeof(charArr), stdin);
-            count = sscanf(charArr, "%d%d%d%d%d%d%d%d%d", &inputArr[0], &inputArr[1], &inputArr[2], &inputArr[3], &inputArr[4],&inputArr[5],&inputArr[6],&inputArr[7],&inputArr[8],&inputArr[9]);
-//            if(count > 9) {
-//                printf("\nPlease enter Exactly nine digits. You have entered %d digits. ", count);
-//                continue;
-//            }
-            if(count < 9){
+            count = sscanf(charArr, "%d%d%d%d%d%d%d%d%d", &inputArr[x][0], &inputArr[x][1], &inputArr[x][2], &inputArr[x][3],
+                           &inputArr[x][4], &inputArr[x][5], &inputArr[x][6], &inputArr[x][7], &inputArr[x][8]);
+
+            if (count < 9) {
                 printf("\nPlease enter Exacly nine digits. You have entered %d digits. ", count);
                 continue;
             }
 
-            for(int i = 0 ; (i < count) && (flag != 0); i++) {
-                duplicate = inputArr[i];
-                for (int j = i+1 ; j < count; j++) {
-                    int v = (inputArr[i] == duplicate);
-                    printf("\ninputArr[%d]= %d & duplicat = %d & %d", j, inputArr[j], duplicate, v);
-                    if (duplicate == inputArr[j]) {
-                        printf("\nEnter nine distinct integers, No duplicates please");
-                        flag = 0;
-                        break;
+
+                for (int i = 0; (i < count) && (flag != 0); i++) {
+                    duplicate = inputArr[x][i];
+                    for (int j = i + 1; j < count; j++) {
+                        if (duplicate == inputArr[x][j]) {
+                            printf("\nEnter nine distinct integers, No duplicates please");
+                            flag = 0;
+                            break;
+                        }
                     }
-                }
+
             }
-            for(int i = 0 ; (i < count) && (flag != 0); i++) {
-                if(((inputArr[i] < 1) || (inputArr[i] > 9)) && (flag==1)){
+            for (int i = 0; (i < count) && (flag != 0); i++) {
+                if (((inputArr[x][i] < 1) || (inputArr[x][i] > 9)) && (flag == 1)) {
                     printf("\nOne or more entries are outside the range (1 -9)!");
                     flag = 0;
                     break;
                 }
             }
+            if (count == 9 && flag == 1)
+                break;
         }
+    }
 
+    for (int k = 0; k < USER_INPUT_ROW_NO; ++k) {
+        for (int i = 0; i < COLUMN_SIZE; ++i) {
+            printf("%d  ", inputArr[k][i]);
+        }
+        printf("\n");
+    }
 }
+
 
 void displayArray(int arr[][COLUMN_SIZE]){
     for(int i = 0 ; i < ROW_SIZE ; i++){
