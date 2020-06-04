@@ -1,0 +1,3 @@
+C:/Users/range/OneDrive/Documents/Semester 4/C/Assignments/Assignment01/TamanaSeddiqi991528861Assignment01/cmake-build-debug/CMakeFiles/TamanaSeddiqi991528861Assignment01.dir
+C:/Users/range/OneDrive/Documents/Semester 4/C/Assignments/Assignment01/TamanaSeddiqi991528861Assignment01/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/range/OneDrive/Documents/Semester 4/C/Assignments/Assignment01/TamanaSeddiqi991528861Assignment01/cmake-build-debug/CMakeFiles/rebuild_cache.dir

@@ -1,0 +1,16 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/range/OneDrive/Documents/Semester 4/C/Assignments/Assignment01/TamanaSeddiqi991528861Assignment01/main.c
+stdio.h
+-
+time.h
+-
+stdlib.h
+-
+
